@@ -1,10 +1,22 @@
 <header class="l_header">
-  <h1 class="l_header_title">MusiQ</h1>
-  <nav class="l_header_nav">
-    <ul class="l_header_nav-list">
-      <li class="l_header_nav-item"><a class="l_header_nav-link">マイページ</a></li>
-      <li class="l_header_nav-item"><a class="l_header_nav-link">マイページ</a></li>
-      <li class="l_header_nav-item"><a class="l_header_nav-link">マイページ</a></li>
-    </ul>
-  </nav>
+  <div class="l_header-inner l_container">
+    <h1 class="l_header-title">
+      <%= link_to "MusiQ", controller: "posts", action: "index", class: "l_header-link" %>
+    </h1>
+    <nav class="l_header-nav">
+      <ul class="l_header-nav_list">
+        <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
+        <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
+        <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
+      </ul>
+    </nav>
+    <button class="m_hamburger">
+      <span class="m_hamburger-bar"></span>
+      <span class="m_hamburger-bar"></span>
+      <span class="m_hamburger-bar"></span>
+    </button>
+    <!--/.m_hamburger-->
+  </div>
+  <!--/.l_header-inner-->
+
 </header>
