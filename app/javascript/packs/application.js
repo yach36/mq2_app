@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -15,3 +16,19 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(document).on("turbolinks:load", function() {
+  // headerのボタン動作
+  const $hamburgerBtn = $(".js_hamburger");
+  const $hamburgerBar = $(".js_hamburger-bar");
+  $hamburgerBtn.on("click", function() {
+    $(this).children($hamburgerBar).toggleClass("is_active");
+  });
+  
+  // footerのボタン動作
+  const $footerItem = $(".js_footer_item");
+  $footerItem.on("click", function() {
+    $footerItem.not(this).removeClass("is_active");
+    $(this).addClass("is_active");
+  });
+});

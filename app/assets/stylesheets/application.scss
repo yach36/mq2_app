@@ -20,6 +20,8 @@
   /* 色管理用の変数 */
   --black-color: #333;
   --white-color: #fff;
+  --gray-color: #707070;
+  --primary-color: #67db8d;
 }
 
 :root {
@@ -58,6 +60,8 @@ body {
   height: 80px;
   background: var(--white-color);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
   
   &-inner {
     height: 100%;
@@ -75,6 +79,34 @@ body {
   
   &-nav {
     display: none;
+  }
+}
+
+.l_footer {
+  width: 100%;
+  height: 80px;
+  background: var(--white-color);
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.08);
+  
+  &-inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &_item {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &_icon-wrapper {
+    display: inline-block;
   }
 }
 
@@ -108,3 +140,36 @@ body {
 }
 
 /* ------------ utility ------------ */
+
+/* ------------ js ------------ */
+.js_hamburger-bar {
+  transition: top 0.25s, left 0.25s, transform 0.25s;
+}
+.js_hamburger-bar.is_active {
+  &:nth-child(1) {
+    top: 50%;
+    transform: rotate(225deg);
+  }
+  &:nth-child(2) {
+    left: 60px;
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    top: 50%;
+    transform: rotate(-225deg);
+  }
+}
+
+.js_footer_item.is_active {
+  position: relative;
+  &:before {
+    content: "";
+    width: 80px;
+    height: 2px;
+    background: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
