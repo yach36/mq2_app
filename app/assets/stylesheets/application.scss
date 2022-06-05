@@ -21,6 +21,7 @@
   --black-color: #333;
   --white-color: #fff;
   --gray-color: #707070;
+  --gray-color02: #ccc;
   --primary-color: #67db8d;
 }
 
@@ -53,6 +54,11 @@ body {
   width: 100%;
   padding: 0 16px;
   margin: 0 auto;
+}
+
+.l_contents {
+  padding: 80px 0;
+  min-height: 100vh;
 }
 
 .l_header {

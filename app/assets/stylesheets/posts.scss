@@ -1,3 +1,59 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* ------------ posts ------------ */
+.posts_article {
+  &:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
+  }
+  &-inner {
+    padding: 16px 24px 32px;
+  }
+  &-header {
+    display: flex;
+  }
+  &_user-img-wrapper {
+    width: 48px;
+    height: 48px;
+    background: var(--gray-color);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &_info {
+  margin-left: 16px;
+  width: calc(100% - 64px);
+  }
+  &_user-name {
+    font-weight: bold;
+  }
+  
+  &_info-sm {
+    line-height: 1.0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &_user-id {
+    font-size: 12px;
+  }
+  &_time {
+    font-size: 12px;
+    color: var(--gray-color02);
+  }
+  
+  &_txt {
+    margin-top: 16px;
+    font-weight: medium;
+  }
+  
+  &_player-wrapper {
+    width: 100%;
+    height: 80px;
+    background: var(--gray-color);
+    margin-top: 16px;
+  }
+}
