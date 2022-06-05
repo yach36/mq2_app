@@ -62,6 +62,7 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
   position: fixed;
   top: 0;
+  z-index: var(--z-index-page-top);
   
   &-inner {
     height: 100%;
@@ -89,6 +90,7 @@ body {
   position: fixed;
   bottom: 0;
   box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.08);
+  z-index: var(--z-index-page-top);
   
   &-inner {
     height: 100%;
@@ -137,6 +139,21 @@ body {
       transform: translateY(-100%);
     }
   }
+}
+
+.m_post-button {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-color);
+  position: fixed;
+  bottom: 104px;
+  right: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+  z-index: var(--z-index-page-top);
 }
 
 /* ------------ utility ------------ */
