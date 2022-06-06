@@ -27,14 +27,26 @@ $(document).on("turbolinks:load", function() {
     $(this).children($hamburgerBar).toggleClass("is_active");
   });
   
-  /* footerのボタン動作 */
+    /* footerのボタン動作 */
   // ポインタの位置の初期化
   const $pointer = $(".js_footer_item-pointer");
-  const firstPos = $("#js_footer_item-1").offset();
-  const firstWidth = $("#js_footer_item-1").width();
+  // URLによってセレクタを選択
+  let $initSelector;
+  let href = location.href; // 現在のURLを取得
+  let localURL = "https://10c04ef926f34ba287b26bfa645b38a4.vfs.cloud9.us-west-2.amazonaws.com/";
+  let hrefList = href.split(localURL); // URLをスラッシュで区切る
+  let hrefLast = hrefList[hrefList.length - 1]; // URLの末尾を取得
+  if (hrefLast == "") {
+    $initSelector = $("#js_footer_item-1");
+  } else if (hrefLast == "hoge/index") {
+    $initSelector = $("#js_footer_item-2");
+  }
+  
+  const initPos = $initSelector.offset();
+  const initWidth = $initSelector.width();
   $pointer.css({
     top: 0,
-    left: firstPos.left + firstWidth / 2
+    left: initPos.left + initWidth / 2
   });
   
   // クリックするとその要素をポイントする
