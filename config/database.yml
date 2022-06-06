@@ -13,8 +13,8 @@ default: &default
 development: &development
   <<: *default
   database: mq_development
-  username: <%= ENV['mysql_development_user'] %>
-  password: <%= ENV['mysql_development_password'] %>
+  username: <%= ENV['MYSQL_DEVELOPMENT_USER'] %>
+  password: <%= ENV['MYSQL_DEVELOPMENT_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

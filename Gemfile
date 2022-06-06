@@ -10,6 +10,7 @@ gem 'jbuilder',   '2.9.1'
 gem 'bootsnap',   '1.10.3', require: false
 gem 'mysql2'
 gem 'dotenv-rails'
+gem 'rspotify'
 
 group :development, :test do
   gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
