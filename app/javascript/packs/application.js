@@ -27,38 +27,52 @@ $(document).on("turbolinks:load", function() {
     $(this).children($hamburgerBar).toggleClass("is_active");
   });
   
-    /* footerのボタン動作 */
-  // ポインタの位置の初期化
+  /* footerのボタン動作(ajaxを用いたカーソルの移動) */
+  // フッターのカーソル
   const $pointer = $(".js_footer_item-pointer");
-  // URLによってセレクタを選択
-  let $initSelector;
-  let href = location.href; // 現在のURLを取得
-  let localURL = "https://10c04ef926f34ba287b26bfa645b38a4.vfs.cloud9.us-west-2.amazonaws.com/";
-  let hrefList = href.split(localURL); // URLをスラッシュで区切る
-  let hrefLast = hrefList[hrefList.length - 1]; // URLの末尾を取得
-  if (hrefLast == "") {
-    $initSelector = $("#js_footer_item-1");
-  } else if (hrefLast == "hoge/index") {
-    $initSelector = $("#js_footer_item-2");
-  }
-  
-  const initPos = $initSelector.offset();
-  const initWidth = $initSelector.width();
-  $pointer.css({
-    top: 0,
-    left: initPos.left + initWidth / 2
-  });
-  
-  // クリックするとその要素をポイントする
+  // フッターのボタン
   const $footerItem = $(".js_footer_item");
+  // カーソルが指し示すアイテム
+  let $pointingItem;
+  // テンプレートの初期化
+  $(".js_template").remove();
+  // $(".js_posts").add();
+  // ボタンをクリックすると発火
   $footerItem.on("click", function() {
-    const itemPos = $(this).offset();
-    const itemWidth = $(this).width();
-    $pointer.animate({
-      top: 0,
-      left: itemPos.left + itemWidth / 2
-    },
-    250,
-    "easeOutQuart");
+    let cursorNum;
+    // クリックしたitemのidを取得
+    const pointingItemId = $(this).attr("id");
+    if (pointingItemId == "js_footer_item-1") {
+      cursorNum = 1;
+    } else if (pointingItemId == "js_footer_item-2") {
+      cursorNum = 2;
+    }
+    $.ajax({
+      type: "GET", // HTTPメソッド
+      url: process.env.LOCAL_URL, // リクエスト送信先
+      data: { cursor: cursorNum }, //送信するデータ
+      dataType: "json"
+    })
+    .done(function(cursor) {
+      /* レスポンス受信後の処理 */
+      console.log(cursor);
+      // 画面遷移
+      if (cursor == 1) {
+        $(".js_template").not("#js_posts").remove();
+      } else if (cursor == 2) {
+        $(".js_template").not("#js_hoge").remove();
+      }
+      
+      $pointingItem = $(`#js_footer_item-${cursor}`);
+      const itemPos = $pointingItem.offset();
+      const itemWidth = $pointingItem.width();
+      アニメーション
+      $pointer.animate({
+        top: 0,
+        left: itemPos.left + itemWidth / 2
+      },
+      250,
+      "easeOutQuart");
+    });
   });
 });
