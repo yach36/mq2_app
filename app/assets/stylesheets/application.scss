@@ -183,9 +183,11 @@ body {
   }
 }
 
-.js_footer_item.is_active {
+
+.js_footer_item {
   position: relative;
-  &:before {
+  &-pointer {
+    transition: opacity 0.05s ease-in;
     content: "";
     width: 80px;
     height: 2px;
