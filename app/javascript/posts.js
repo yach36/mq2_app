@@ -16,6 +16,7 @@ $(document).on("turbolinks:load", function() {
     })
     .done(function(tracks) {
       /* レスポンスを受信したときの処理 */
+      console.log(tracks);
       // 検索結果をクリア
       $(".result").find("li").remove();
       // 検索結果を表示

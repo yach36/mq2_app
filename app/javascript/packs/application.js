@@ -11,6 +11,8 @@ require("jquery");
 require("jquery-easing");
 require("posts");
 
+window.$ = jQuery;
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -18,6 +20,7 @@ require("posts");
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+/* ------------ layout ------------*/
 $(document).on("turbolinks:load", function() {
   /* headerのボタン動作 */
   // クリックするごとにクラスを取り外しする
@@ -28,51 +31,60 @@ $(document).on("turbolinks:load", function() {
   });
   
   /* footerのボタン動作(ajaxを用いたカーソルの移動) */
-  // フッターのカーソル
-  const $pointer = $(".js_footer_item-pointer");
-  // フッターのボタン
-  const $footerItem = $(".js_footer_item");
+  const $pointer = $(".js_footer_item-pointer"); // フッターのカーソル
+  const $footerItem = $(".js_footer_item"); // フッターのボタン
+  // カーソル位置の初期化
+  const $initItem = $("#js_footer_item-1");
+  const initPos = $initItem.offset();
+  const initWidth = $initItem.width();
+  $pointer.css({
+    top: 0,
+    left: initPos.left + initWidth / 2
+  });
+  
   // カーソルが指し示すアイテム
   let $pointingItem;
-  // テンプレートの初期化
-  $(".js_template").remove();
-  // $(".js_posts").add();
   // ボタンをクリックすると発火
   $footerItem.on("click", function() {
-    let cursorNum;
-    // クリックしたitemのidを取得
-    const pointingItemId = $(this).attr("id");
-    if (pointingItemId == "js_footer_item-1") {
-      cursorNum = 1;
-    } else if (pointingItemId == "js_footer_item-2") {
-      cursorNum = 2;
-    }
-    $.ajax({
-      type: "GET", // HTTPメソッド
-      url: process.env.LOCAL_URL, // リクエスト送信先
-      data: { cursor: cursorNum }, //送信するデータ
-      dataType: "json"
-    })
-    .done(function(cursor) {
-      /* レスポンス受信後の処理 */
-      console.log(cursor);
-      // 画面遷移
-      if (cursor == 1) {
-        $(".js_template").not("#js_posts").remove();
-      } else if (cursor == 2) {
-        $(".js_template").not("#js_hoge").remove();
-      }
+    const itemPos = $(this).offset();
+    const itemWidth = $(this).width();
+    $pointer.animate({
+      top: 0,
+      left: itemPos.left + itemWidth / 2
+    },
+    250,
+    "easeOutQuart");
+    
+    // let cursorNum;
+    // // クリックしたitemのidを取得
+    // const pointingItemId = $(this).attr("id");
+    // if (pointingItemId == "js_footer_item-1") {
+    //   cursorNum = 1;
+    // } else if (pointingItemId == "js_footer_item-2") {
+    //   cursorNum = 2;
+    // }
+    // $.ajax({
+    //   type: "GET", // HTTPメソッド
+    //   url: process.env.LOCAL_URL, // リクエスト送信先
+    //   data: { cursor: cursorNum }, //送信するデータ
+    //   dataType: "json"
+    // })
+    // .done(function(cursor) {
+    //   /* レスポンス受信後の処理 */
+    //   console.log(cursor);
       
-      $pointingItem = $(`#js_footer_item-${cursor}`);
-      const itemPos = $pointingItem.offset();
-      const itemWidth = $pointingItem.width();
-      アニメーション
-      $pointer.animate({
-        top: 0,
-        left: itemPos.left + itemWidth / 2
-      },
-      250,
-      "easeOutQuart");
-    });
+    //   $pointingItem = $(`#js_footer_item-${cursor}`);
+    //   const itemPos = $pointingItem.offset();
+    //   const itemWidth = $pointingItem.width();
+    //   // アニメーション
+    //   $pointer.animate({
+    //     top: 0,
+    //     left: itemPos.left + itemWidth / 2
+    //   },
+    //   250,
+    //   "easeOutQuart");
+    // });
   });
 });
+
+/* ------------ posts ------------*/
