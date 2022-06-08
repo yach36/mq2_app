@@ -26,4 +26,9 @@ class PostsController < ApplicationController
       format.js
     end
   end
+  
+  def new
+    
+  end
+  
 end

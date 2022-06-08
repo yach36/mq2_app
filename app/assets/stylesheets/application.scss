@@ -47,6 +47,13 @@ body {
   font-size: 16px;
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.75;
+  // スクロールバー非表示
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* ------------ layout ------------ */
