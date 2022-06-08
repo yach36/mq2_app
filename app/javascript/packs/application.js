@@ -44,47 +44,30 @@ $(document).on("turbolinks:load", function() {
   
   // カーソルが指し示すアイテム
   let $pointingItem;
+  let itemPos;
+  let itemWidth;
   // ボタンをクリックすると発火
   $footerItem.on("click", function() {
-    const itemPos = $(this).offset();
-    const itemWidth = $(this).width();
+    $pointingItem = $(this);
+    itemPos = $(this).offset();
+    itemWidth = $(this).width();
     $pointer.animate({
       top: 0,
       left: itemPos.left + itemWidth / 2
     },
     250,
     "easeOutQuart");
-    
-    // let cursorNum;
-    // // クリックしたitemのidを取得
-    // const pointingItemId = $(this).attr("id");
-    // if (pointingItemId == "js_footer_item-1") {
-    //   cursorNum = 1;
-    // } else if (pointingItemId == "js_footer_item-2") {
-    //   cursorNum = 2;
-    // }
-    // $.ajax({
-    //   type: "GET", // HTTPメソッド
-    //   url: process.env.LOCAL_URL, // リクエスト送信先
-    //   data: { cursor: cursorNum }, //送信するデータ
-    //   dataType: "json"
-    // })
-    // .done(function(cursor) {
-    //   /* レスポンス受信後の処理 */
-    //   console.log(cursor);
-      
-    //   $pointingItem = $(`#js_footer_item-${cursor}`);
-    //   const itemPos = $pointingItem.offset();
-    //   const itemWidth = $pointingItem.width();
-    //   // アニメーション
-    //   $pointer.animate({
-    //     top: 0,
-    //     left: itemPos.left + itemWidth / 2
-    //   },
-    //   250,
-    //   "easeOutQuart");
-    // });
   });
+  
+  /* 画面幅が変わればカーソルを移動 */
+    $(window).on("resize", function() {
+      itemPos = $pointingItem.offset();
+      itemWidth = $pointingItem.width();
+      $pointer.css({
+        top: 0,
+        left: itemPos.left + itemWidth / 2
+      });
+    });
 });
 
 /* ------------ posts ------------*/
