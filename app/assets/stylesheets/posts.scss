@@ -49,6 +49,7 @@
   &_txt {
     margin-top: 16px;
     font-weight: medium;
+    line-height: 1.5;
   }
   
   &_player-wrapper {
@@ -68,6 +69,7 @@
   position: fixed;
   top: 96px;
   background: var(--white-color);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   z-index: var(--z-index-header);
   &-inner {
     padding: 16px 16px 24px;
@@ -128,6 +130,7 @@
     border-radius: 5px;
     padding: 8px 12px;
     font-weight: medium;
+    line-height: 1.5;
     resize: none;
     &::placeholder {
       color: var(--gray-color02);
