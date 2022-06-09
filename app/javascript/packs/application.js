@@ -43,7 +43,7 @@ $(document).on("turbolinks:load", function() {
   });
   
   // カーソルが指し示すアイテム
-  let $pointingItem;
+  let $pointingItem = $initItem;
   let itemPos;
   let itemWidth;
   // ボタンをクリックすると発火
@@ -60,14 +60,14 @@ $(document).on("turbolinks:load", function() {
   });
   
   /* 画面幅が変わればカーソルを移動 */
-    $(window).on("resize", function() {
-      itemPos = $pointingItem.offset();
-      itemWidth = $pointingItem.width();
-      $pointer.css({
-        top: 0,
-        left: itemPos.left + itemWidth / 2
-      });
+  $(window).on("resize", function() {
+    itemPos = $pointingItem.offset();
+    itemWidth = $pointingItem.width();
+    $pointer.css({
+      top: 0,
+      left: itemPos.left + itemWidth / 2
     });
+  });
 });
 
 /* ------------ posts ------------*/

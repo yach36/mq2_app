@@ -21,10 +21,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/postBtn' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+  <body class="js_body">
+    <div class="js_wrapper">
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/postBtn' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+    <div class="js_posts_modal-wrapper l_container"></div>
   </body>
 </html>

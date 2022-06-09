@@ -22,13 +22,16 @@ class PostsController < ApplicationController
     # end
     @templateNum = 1
     respond_to do |format|
-      format.html { render "_index" }
+      format.html { render "posts/index" }
       format.js
     end
   end
   
   def new
-    
+    respond_to do |format|
+      format.html { render "posts/new" }
+      format.js
+    end
   end
   
 end

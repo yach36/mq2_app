@@ -1,5 +1,5 @@
 $(document).on("turbolinks:load", function() {
-  $(".posts_input").on("keyup", function() {
+  $(".posts_form_text").on("keyup", function() {
     /* 非同期通信でspotifyの曲検索の結果を表示する */
     // 検索文字列
     let seq = $(this).val();
@@ -18,10 +18,10 @@ $(document).on("turbolinks:load", function() {
       /* レスポンスを受信したときの処理 */
       console.log(tracks);
       // 検索結果をクリア
-      $(".result").find("li").remove();
+      $(".posts_form_tracks").find("li").remove();
       // 検索結果を表示
       for (let i = 0; i < tracks.length; i++) {
-        $(".result").append(`<li>${tracks[i]["name"]}</li>`);
+        $(".posts_form_tracks").append(`<li>${tracks[i]["name"]}</li>`);
       }
     });
   });
