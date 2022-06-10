@@ -9,7 +9,9 @@ require("@rails/activestorage").start();
 require("channels");
 require("jquery");
 require("jquery-easing");
+require("posts");
 
+window.$ = jQuery;
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -18,6 +20,7 @@ require("jquery-easing");
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+/* ------------ layout ------------*/
 $(document).on("turbolinks:load", function() {
   /* headerのボタン動作 */
   // クリックするごとにクラスを取り外しする
@@ -27,33 +30,27 @@ $(document).on("turbolinks:load", function() {
     $(this).children($hamburgerBar).toggleClass("is_active");
   });
   
-    /* footerのボタン動作 */
-  // ポインタの位置の初期化
-  const $pointer = $(".js_footer_item-pointer");
-  // URLによってセレクタを選択
-  let $initSelector;
-  let href = location.href; // 現在のURLを取得
-  let localURL = "https://10c04ef926f34ba287b26bfa645b38a4.vfs.cloud9.us-west-2.amazonaws.com/";
-  let hrefList = href.split(localURL); // URLをスラッシュで区切る
-  let hrefLast = hrefList[hrefList.length - 1]; // URLの末尾を取得
-  if (hrefLast == "") {
-    $initSelector = $("#js_footer_item-1");
-  } else if (hrefLast == "hoge/index") {
-    $initSelector = $("#js_footer_item-2");
-  }
-  
-  const initPos = $initSelector.offset();
-  const initWidth = $initSelector.width();
+  /* footerのボタン動作(ajaxを用いたカーソルの移動) */
+  const $pointer = $(".js_footer_item-pointer"); // フッターのカーソル
+  const $footerItem = $(".js_footer_item"); // フッターのボタン
+  // カーソル位置の初期化
+  const $initItem = $("#js_footer_item-1");
+  const initPos = $initItem.offset();
+  const initWidth = $initItem.width();
   $pointer.css({
     top: 0,
     left: initPos.left + initWidth / 2
   });
   
-  // クリックするとその要素をポイントする
-  const $footerItem = $(".js_footer_item");
+  // カーソルが指し示すアイテム
+  let $pointingItem = $initItem;
+  let itemPos;
+  let itemWidth;
+  // ボタンをクリックすると発火
   $footerItem.on("click", function() {
-    const itemPos = $(this).offset();
-    const itemWidth = $(this).width();
+    $pointingItem = $(this);
+    itemPos = $(this).offset();
+    itemWidth = $(this).width();
     $pointer.animate({
       top: 0,
       left: itemPos.left + itemWidth / 2
@@ -61,4 +58,16 @@ $(document).on("turbolinks:load", function() {
     250,
     "easeOutQuart");
   });
+  
+  /* 画面幅が変わればカーソルを移動 */
+  $(window).on("resize", function() {
+    itemPos = $pointingItem.offset();
+    itemWidth = $pointingItem.width();
+    $pointer.css({
+      top: 0,
+      left: itemPos.left + itemWidth / 2
+    });
+  });
 });
+
+/* ------------ posts ------------*/

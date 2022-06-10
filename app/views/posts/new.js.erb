@@ -1,0 +1,77 @@
+$(".js_posts_modal-wrapper").html("<%= j(render "posts/new") %>");
+<!--/* モーダル表示/非表示 */-->
+<!--// modal-->
+let $postModal = $(".js_posts_modal-wrapper");
+let postModalOpacity = $postModal.css("opacity");
+<!--// postBtn-->
+let $postBtn = $(".js_post-button");
+let postBtnRight = $postBtn.css("right");
+let postBtnOpacity = $postBtn.css("opacity");
+<!--// wrapper-->
+let $wrapper = $(".js_wrapper")
+let wrapperOpacity = $wrapper.css("opacity");
+<!--// body-->
+let $body = $(".js_body");
+
+let $postModalCross = $(".js_posts_modal_cross");
+let fadeTime = 240;
+$postModal.hide();
+<!--// 表示-->
+$postBtn.on("click", function() {
+  $(this).animate({
+    right: "-120px"
+  },
+  fadeTime);
+  $wrapper.css({
+    pointerEvents: "none"
+  });
+  // レコメンド一覧を非表示
+  $body.css({
+    overflowY: "hidden"
+  });
+  $wrapper.animate({
+    opacity: "0.1",
+  },
+  fadeTime);
+  $postModal.fadeIn(fadeTime);
+});
+<!--// 非表示-->
+$postModalCross.on("click", function() {
+    $postModal.fadeOut(fadeTime);
+    $wrapper.animate({
+      opacity: wrapperOpacity
+    },
+    fadeTime);
+    $body.css({
+      overflowY: "scroll"
+    });
+    $wrapper.css({
+      pointerEvents: "auto",
+    });
+    $postBtn.animate({
+      right: postBtnRight
+    },
+    fadeTime);
+});
+
+<!-- spotifyAPIを用いた曲検索 -->
+$(".posts_form_text").on("keyup", function() {
+  let seq = $(this).val();
+  if (!seq) {
+    $(".posts_form_tracks").find("li").remove();
+  }
+  $.ajax({
+    type: "GET",
+    url: "<%= ENV["LOCAL_URL"] %>",
+    data: { search: seq },
+    dataType: "json"
+  })
+  .done(function(tracks) {
+    console.log(tracks);
+    <!-- 検索結果をクリア -->
+    $(".posts_form_tracks").find("li").remove();
+    for (let i = 0; i < tracks.length; i++) {
+      $(".posts_form_tracks").append(`<li>${tracks[i]["name"]}</li>`);
+    }
+  });
+});

@@ -47,6 +47,13 @@ body {
   font-size: 16px;
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.75;
+  // スクロールバー非表示
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* ------------ layout ------------ */
@@ -169,7 +176,7 @@ body {
   background: var(--primary-color);
   position: fixed;
   bottom: 104px;
-  right: 24px;
+  right: 16px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -181,6 +188,7 @@ body {
 /* ------------ utility ------------ */
 
 /* ------------ js ------------ */
+
 .js_hamburger-bar {
   transition: top 0.25s, left 0.25s, transform 0.25s;
 }
