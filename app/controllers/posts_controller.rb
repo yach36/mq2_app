@@ -12,10 +12,10 @@ class PostsController < ApplicationController
   
   def new
     # アーティスト名で曲を検索(rspotify)
-    @search = params[:search]
-    if @search.present?
+    search = params[:search]
+    if search.present?
       # 検索文字列にヒットする曲一覧
-      @tracks = RSpotify::Track.search(@search)
+      @tracks = RSpotify::Track.search(search)
       respond_to do |format|
         format.json { render json: @tracks }
       end

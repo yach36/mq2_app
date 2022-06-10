@@ -55,10 +55,22 @@ $postModalCross.on("click", function() {
 });
 
 <!-- spotifyAPIを用いた曲検索 -->
+let formExplanationWrapperHtml = `
+<div class="posts_form_tracks_explanation-wrapper">
+  <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
+</div>`;
+let $formTracks = $(".posts_form_tracks");
+let cnt = 0;
 $(".posts_form_text").on("keyup", function() {
   let seq = $(this).val();
+  let $trackItems = $(".posts_form_tracks").find(".posts_form_tracks_item");
   if (!seq) {
-    $(".posts_form_tracks").find("li").remove();
+    $trackItems.remove();
+    <!-- 初期状態に戻す -->
+    if (cnt == 0) {
+      $formTracks.append(formExplanationWrapperHtml);
+      cnt = 1;
+    }
   }
   $.ajax({
     type: "GET",
@@ -69,9 +81,27 @@ $(".posts_form_text").on("keyup", function() {
   .done(function(tracks) {
     console.log(tracks);
     <!-- 検索結果をクリア -->
-    $(".posts_form_tracks").find("li").remove();
+    $trackItems.remove();
+    <!-- 説明文を消す -->
+    $formTracks.find(".posts_form_tracks_explanation-wrapper").remove();
+    cnt = 0;
+    <!-- 検索結果を表示 -->
     for (let i = 0; i < tracks.length; i++) {
-      $(".posts_form_tracks").append(`<li>${tracks[i]["name"]}</li>`);
+    let trackImage = tracks[i]["album"]["images"][1]["url"];
+    let trackName = tracks[i]["name"];
+    let trackArtist = tracks[i]["artists"][0]["name"];
+    $(".posts_form_tracks")
+    .append(`
+      <div class="posts_form_tracks_item">
+        <div class="posts_form_tracks_img-wrapper">
+          <img class="posts_form_tracks_img" src="${trackImage}" />
+        </div>
+        <div class="posts_form_tracks_info-wrapper">
+          <p class="posts_form_tracks_name">${trackName}</p>
+          <p class="posts_form_tracks_artist">${trackArtist}</p>
+        </div>
+      </div>`);
+    <!--.append(`<iframe src="https://open.spotify.com/embed/track/${tracks[i]['id']}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`);-->
     }
   });
 });
