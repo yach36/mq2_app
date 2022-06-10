@@ -11,7 +11,7 @@
     <!--/.posts_modal-header-->
     <form class="posts_form">
       <textarea class="posts_form_textarea" placeholder="自由にテキストを入力しよう！"></textarea>
-      <input class="posts_form_text" type="text" placeholder="曲名を入力してください" />
+      <%= text_field_tag :search, "", class: "posts_form_text", placeholder: "曲名を入力してください", remote: true %>
       <div class="posts_form_tracks"></div>
       <div class="posts_btn-wrapper">
         <button class="posts_btn posts_btn_cancel">キャンセル</button>
