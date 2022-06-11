@@ -1,7 +1,6 @@
-$(".js_posts_modal-wrapper").html("<%= j(render "posts/new") %>");
-<!--/* モーダル表示/非表示 */-->
 <!--// modal-->
 let $postModal = $(".js_posts_modal-wrapper");
+$postModal.html("<%= j(render "posts/new") %>");
 let postModalOpacity = $postModal.css("opacity");
 <!--// postBtn-->
 let $postBtn = $(".js_post-button");
@@ -12,11 +11,13 @@ let $wrapper = $(".js_wrapper")
 let wrapperOpacity = $wrapper.css("opacity");
 <!--// body-->
 let $body = $(".js_body");
-
+<!--×印-->
 let $postModalCross = $(".js_posts_modal_cross");
+<!--キャンセルボタン-->
+let $cancelBtn = $(".js_btn_cancel");
 let fadeTime = 240;
 $postModal.hide();
-<!--// 表示-->
+<!--モーダル表示-->
 $postBtn.on("click", function() {
   $(this).animate({
     right: "-120px"
@@ -35,8 +36,8 @@ $postBtn.on("click", function() {
   fadeTime);
   $postModal.fadeIn(fadeTime);
 });
-<!--// 非表示-->
-$postModalCross.on("click", function() {
+<!--モーダル非表示-->
+let modalHide = () => {
     $postModal.fadeOut(fadeTime);
     $wrapper.animate({
       opacity: wrapperOpacity
@@ -52,6 +53,14 @@ $postModalCross.on("click", function() {
       right: postBtnRight
     },
     fadeTime);
+};
+<!--×印を押すとモーダル非表示-->
+$postModalCross.on("click", function() {
+  modalHide();
+});
+<!--キャンセルボタンを押すとモーダル非表示-->
+$cancelBtn.on("click", function() {
+  modalHide();
 });
 
 <!-- spotifyAPIを用いた曲検索 -->
@@ -87,11 +96,13 @@ $(".posts_form_text").on("keyup", function() {
     cnt = 0;
     <!-- 検索結果を表示 -->
     for (let i = 0; i < tracks.length; i++) {
+    let trackId = tracks[i]["id"];
     let trackImage = tracks[i]["album"]["images"][1]["url"];
     let trackName = tracks[i]["name"];
     let trackArtist = tracks[i]["artists"][0]["name"];
     $(".posts_form_tracks")
     .append(`
+    <a data-remote="true" href="/posts/track_select?track_id=${trackId}">
       <div class="posts_form_tracks_item">
         <div class="posts_form_tracks_img-wrapper">
           <img class="posts_form_tracks_img" src="${trackImage}" />
@@ -100,7 +111,8 @@ $(".posts_form_text").on("keyup", function() {
           <p class="posts_form_tracks_name">${trackName}</p>
           <p class="posts_form_tracks_artist">${trackArtist}</p>
         </div>
-      </div>`);
+      </div>
+    </a>`);
     <!--.append(`<iframe src="https://open.spotify.com/embed/track/${tracks[i]['id']}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`);-->
     }
   });

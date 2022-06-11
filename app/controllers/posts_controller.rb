@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  # spotifyAPIの認証
-  RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
   
   def index
     @templateNum = 1
@@ -11,19 +9,23 @@ class PostsController < ApplicationController
   end
   
   def new
-    # アーティスト名で曲を検索(rspotify)
-    search = params[:search]
-    if search.present?
-      # 検索文字列にヒットする曲一覧
-      @tracks = RSpotify::Track.search(search)
-      respond_to do |format|
-        format.json { render json: @tracks }
-      end
-    end
+    @post = Post.new
+  end
+  
+  def create
+    @post = Post.new(post_params)
+    @post.save!
+  end
+  
+  def track_select
+    @track_id = params[:track_id]
     respond_to do |format|
-      format.html { render "posts/new" }
       format.js
     end
   end
   
+  private
+  def post_params
+    params.require(:post).permit(:txt, :track_id)
+  end
 end

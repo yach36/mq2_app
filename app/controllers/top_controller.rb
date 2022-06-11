@@ -12,15 +12,6 @@ class TopController < ApplicationController
       end
     end
     
-    # フッターのカーソルを制御
-    # @cursorNum = params[:cursor]
-    # if @cursorNum.present?
-    #   respond_to do |format|
-    #     format.html
-    #     format.json { render json: @cursorNum }
-    #   end
-    # end
-    
     # 表示するテンプレートを制御するための変数
     @templateNum = 1
   end

@@ -9,8 +9,9 @@
       <!--/.posts_modal_cross-->
     </div>
     <!--/.posts_modal-header-->
-    <form class="posts_form">
-      <textarea class="posts_form_textarea" placeholder="自由にテキストを入力しよう！"></textarea>
+    <%= form_with model: @post, url: posts_path, class: "posts_form" do |f| %>
+      <%= f.text_area :txt, class: "posts_form_textarea", placeholder: "自由にテキストを入力しよう！" %>
+      <%= f.hidden_field :track_id, class: "posts_form_hidden" %>
       <%= text_field_tag :search, "", class: "posts_form_text", placeholder: "曲名を入力してください", remote: true %>
       <div class="posts_form_tracks">
         <div class="posts_form_tracks_explanation-wrapper">
@@ -18,11 +19,25 @@
         </div>
       </div>
       <div class="posts_btn-wrapper">
-        <button class="posts_btn posts_btn_cancel">キャンセル</button>
-        <button class="posts_btn posts_btn_submit">投稿する</button>
+        <%= button_tag "キャンセル", class: "posts_btn posts_btn_cancel js_btn_cancel", remote: true %>
+        <%= f.submit "投稿する", class: "posts_btn posts_btn_submit" %>
       </div>
+    <% end %>
+    
+    <!--<form class="posts_form">-->
+    <!--  <textarea class="posts_form_textarea" placeholder="自由にテキストを入力しよう！"></textarea>-->
+    <!--  <%#= text_field_tag :search, "", class: "posts_form_text", placeholder: "曲名を入力してください", remote: true %>-->
+    <!--  <div class="posts_form_tracks">-->
+    <!--    <div class="posts_form_tracks_explanation-wrapper">-->
+    <!--      <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--  <div class="posts_btn-wrapper">-->
+    <!--    <button class="posts_btn posts_btn_cancel js_btn_cancel">キャンセル</button>-->
+    <!--    <button class="posts_btn posts_btn_submit">投稿する</button>-->
+    <!--  </div>-->
       <!--/.posts_btn-wrapper-->
-    </form>
+    <!--</form>-->
   </div>
   <!--/.posts_modal-inner-->
 </div>
