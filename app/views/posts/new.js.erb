@@ -102,8 +102,8 @@ $(".posts_form_text").on("keyup", function() {
     let trackArtist = tracks[i]["artists"][0]["name"];
     $(".posts_form_tracks")
     .append(`
-    <a data-remote="true" href="/posts/track_select?track_id=${trackId}">
-      <div class="posts_form_tracks_item">
+    <div class="posts_form_tracks_item">
+      <a class="posts_form_tracks_link" data-remote="true" href="/posts/track_select?track_id=${trackId}">
         <div class="posts_form_tracks_img-wrapper">
           <img class="posts_form_tracks_img" src="${trackImage}" />
         </div>
@@ -111,8 +111,8 @@ $(".posts_form_text").on("keyup", function() {
           <p class="posts_form_tracks_name">${trackName}</p>
           <p class="posts_form_tracks_artist">${trackArtist}</p>
         </div>
-      </div>
-    </a>`);
+      </a>
+    </div>`);
     <!--.append(`<iframe src="https://open.spotify.com/embed/track/${tracks[i]['id']}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`);-->
     }
   });
