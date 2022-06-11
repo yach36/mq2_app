@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   
   def index
     @templateNum = 1
+    # 投稿を最新順に
+    @posts = Post.all.order(created_at: "DESC")
     respond_to do |format|
       format.html { render "posts/index" }
       format.js
