@@ -13,7 +13,9 @@
             <h3 class="posts_article_user-name">takashi</h3>
             <div class="posts_article_info-sm">
               <span class="posts_article_user-id">@takashisamadesugananika</span>
-              <time class="posts_article_time">5:38 - 今日</time>
+              <time class="posts_article_time">
+                <%= l post.created_at, format: :time %> - <%= post.redefine_date_format %>
+              </time>
             </div>
             <!--/.posts_article_info-sm-->
           </div>
