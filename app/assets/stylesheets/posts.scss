@@ -211,6 +211,9 @@
       margin-top: 4px;
     }
   }
+  &_tracks::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .posts_btn-wrapper {
