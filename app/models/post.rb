@@ -14,7 +14,7 @@ class Post < ApplicationRecord
     elsif self_date == yesterday
       return "昨日"
     else
-      # 昨日
+      # 昨日以前
       return self_datetime.strftime("%Y/%m/%d")
     end
   end
