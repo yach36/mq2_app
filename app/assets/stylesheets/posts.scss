@@ -9,7 +9,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.16);
   }
   &-inner {
-    padding: 16px 24px 32px;
+    padding: 16px 24px 40px;
   }
   &-header {
     display: flex;
@@ -41,6 +41,9 @@
   &_user-id {
     font-size: 12px;
   }
+  &_time-wrapper {
+    margin-top: 4px;
+  }
   &_time {
     font-size: 12px;
     color: var(--gray-color02);
@@ -60,6 +63,7 @@
   }
   &_player {
     width: 100%;
+    // pointer-events: none
   }
 }
 

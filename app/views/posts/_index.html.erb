@@ -13,15 +13,18 @@
             <h3 class="posts_article_user-name">takashi</h3>
             <div class="posts_article_info-sm">
               <span class="posts_article_user-id">@takashisamadesugananika</span>
-              <time class="posts_article_time">
-                <%= l post.created_at, format: :time %> - <%= post.redefine_date_format %>
-              </time>
             </div>
             <!--/.posts_article_info-sm-->
           </div>
           <!--/.posts_article_info-->
         </div>
         <!--/.posts_article-header-->
+        <div class="posts_article_time-wrapper">
+          <time class="posts_article_time">
+            <%= l post.created_at, format: :time %> - <%= post.redefine_date_format %>
+          </time>
+        </div>
+        <!--/.posts_article_time-wrapper-->
         <p class="posts_article_txt">
           <%= safe_join post.txt.split("\n"), tag(:br) %>
         </p>
