@@ -237,6 +237,9 @@
     margin-left: 16px;
   }
   &_cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: var(--gray-color02);
   }
   &_submit {

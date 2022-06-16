@@ -3,8 +3,10 @@
     <div class="posts_modal-header">
       <h2 class="posts_modal_head">レコメンド投稿する</h2>
       <div class="posts_modal_cross js_posts_modal_cross">
+        <%= link_to posts_cancel_path, remote: true do %>
         <span class="posts_modal_cross-bar"></span>
         <span class="posts_modal_cross-bar"></span>
+        <% end %>
       </div>
       <!--/.posts_modal_cross-->
     </div>
@@ -19,7 +21,7 @@
         </div>
       </div>
       <div class="posts_btn-wrapper">
-        <%= button_tag "キャンセル", class: "posts_btn posts_btn_cancel js_btn_cancel", remote: true %>
+        <%= link_to "キャンセル", posts_cancel_path, class: "posts_btn posts_btn_cancel js_btn_cancel", remote: true %>
         <%= f.submit "投稿する", class: "posts_btn posts_btn_submit" %>
       </div>
     <% end %>

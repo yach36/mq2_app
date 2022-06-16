@@ -19,6 +19,10 @@ class PostsController < ApplicationController
     @post.save!
   end
   
+  def cancel
+    
+  end
+  
   def track_select
     @track_id = params[:track_id]
     respond_to do |format|

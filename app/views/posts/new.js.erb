@@ -36,32 +36,6 @@ $postBtn.on("click", function() {
   fadeTime);
   $postModal.fadeIn(fadeTime);
 });
-<!--モーダル非表示-->
-let modalHide = () => {
-    $postModal.fadeOut(fadeTime);
-    $wrapper.animate({
-      opacity: wrapperOpacity
-    },
-    fadeTime);
-    $body.css({
-      overflowY: "scroll"
-    });
-    $wrapper.css({
-      pointerEvents: "auto",
-    });
-    $postBtn.animate({
-      right: postBtnRight
-    },
-    fadeTime);
-};
-<!--×印を押すとモーダル非表示-->
-$postModalCross.on("click", function() {
-  modalHide();
-});
-<!--キャンセルボタンを押すとモーダル非表示-->
-$cancelBtn.on("click", function() {
-  modalHide();
-});
 
 <!-- spotifyAPIを用いた曲検索 -->
 let formExplanationWrapperHtml = `
