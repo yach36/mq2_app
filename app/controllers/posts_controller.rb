@@ -26,6 +26,9 @@ class PostsController < ApplicationController
   
   def track_select
     @track_id = params[:track_id]
+    @track_image = params[:track_image]
+    @track_name = params[:track_name]
+    @track_artist = params[:track_artist]
     respond_to do |format|
       format.js
     end

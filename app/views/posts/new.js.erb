@@ -17,6 +17,11 @@ let $postModalCross = $(".js_posts_modal_cross");
 let $cancelBtn = $(".js_btn_cancel");
 let fadeTime = 240;
 $postModal.hide();
+<!-- 検索結果初期表示 -->
+let formExplanationWrapperHtml = `
+<div class="posts_form_tracks_explanation-wrapper">
+  <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
+</div>`;
 <!--モーダル表示-->
 $postBtn.on("click", function() {
   $(this).animate({
@@ -35,25 +40,20 @@ $postBtn.on("click", function() {
   },
   fadeTime);
   $postModal.fadeIn(fadeTime);
+  $formTracks.html(formExplanationWrapperHtml);
 });
 
 <!-- spotifyAPIを用いた曲検索 -->
-let formExplanationWrapperHtml = `
-<div class="posts_form_tracks_explanation-wrapper">
-  <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
-</div>`;
 let $formTracks = $(".posts_form_tracks");
-let cnt = 0;
 $(".posts_form_text").on("keyup", function() {
+  <!-- 検索文字列を格納 -->
   let seq = $(this).val();
   let $trackItems = $(".posts_form_tracks").find(".posts_form_tracks_item");
   if (!seq) {
+  <!-- 検索結果を削除 -->
     $trackItems.remove();
     <!-- 初期状態に戻す -->
-    if (cnt == 0) {
-      $formTracks.append(formExplanationWrapperHtml);
-      cnt = 1;
-    }
+    $formTracks.html(formExplanationWrapperHtml);
   }
   $.ajax({
     type: "GET",
@@ -67,7 +67,6 @@ $(".posts_form_text").on("keyup", function() {
     $trackItems.remove();
     <!-- 説明文を消す -->
     $formTracks.find(".posts_form_tracks_explanation-wrapper").remove();
-    cnt = 0;
     <!-- 検索結果を表示 -->
     for (let i = 0; i < tracks.length; i++) {
     let trackId = tracks[i]["id"];
@@ -77,7 +76,7 @@ $(".posts_form_text").on("keyup", function() {
     $(".posts_form_tracks")
     .append(`
     <div class="posts_form_tracks_item">
-      <a class="posts_form_tracks_link" data-remote="true" href="/posts/track_select?track_id=${trackId}">
+      <a class="posts_form_tracks_link" data-remote="true" href="/posts/track_select?track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}">
         <div class="posts_form_tracks_img-wrapper">
           <img class="posts_form_tracks_img" src="${trackImage}" />
         </div>
