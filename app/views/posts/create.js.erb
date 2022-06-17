@@ -1,4 +1,3 @@
-
 <!--モーダル非表示-->
 var modalHide = () => {
     $postModal.fadeOut(fadeTime);
@@ -18,4 +17,10 @@ var modalHide = () => {
     fadeTime);
 };
 modalHide();
+<!-- 入力欄をクリア -->
+$(".posts_form_textarea").val("");
+$(".posts_form_text").val("");
+<!-- 曲検索結果をクリア -->
+$formTracks.html(formExplanationWrapperHtml);
+<!-- 投稿一覧を表示 -->
 $(".l_main-wrapper").html("<%= j(render "posts/index", posts: @posts) %>");
