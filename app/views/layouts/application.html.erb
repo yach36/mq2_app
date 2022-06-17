@@ -25,7 +25,9 @@
     <div class="js_wrapper">
       <%= render 'layouts/header' %>
       <%= render 'layouts/postBtn' %>
-      <%= yield %>
+      <div class="l_main-wrapper">
+        <%= yield %>
+      </div>
       <%= render 'layouts/footer' %>
     </div>
     <div class="js_posts_modal-wrapper l_container"></div>

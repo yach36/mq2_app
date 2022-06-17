@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save!
+    @posts = Post.all.order(created_at: "DESC")
   end
   
   def cancel
