@@ -7,7 +7,7 @@ console.log(trackId);
 <!-- 取得した曲IDをパラメータに設定 -->
 $(".posts_form_hidden").attr("value", trackId);
 <!-- 検索入力欄を無効にする -->
-$(".posts_form_text").attr("disabled", "disabled");
+$(".posts_form_text").attr("disabled", true);
 <!-- 選択済み画面を表示 -->
 $(".js_form_tracks").html(`
   <div class="posts_selected-track_item">
@@ -24,3 +24,6 @@ $(".js_form_tracks").html(`
 <!-- 検索結果欄のスタイル変更のためにクラス付与 -->
 $(".js_form_tracks").removeClass("is_active");
 $(".js_form_tracks").addClass("is_hidden");
+<!-- 検索フォームの値をクリア -->
+$(".js_form_text").val("");
+$(".js_form_text").attr("placeholder", "");

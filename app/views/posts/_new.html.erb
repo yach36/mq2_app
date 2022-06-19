@@ -14,7 +14,7 @@
     <%= form_with model: @post, url: posts_path, class: "posts_form" do |f| %>
       <%= f.text_area :txt, class: "posts_form_textarea", placeholder: "自由にテキストを入力しよう！" %>
       <%= f.hidden_field :track_id, class: "posts_form_hidden" %>
-      <%= text_field_tag :search, "", class: "posts_form_text", placeholder: "曲名を入力してください", remote: true %>
+      <%= text_field_tag :search, "", class: "posts_form_text js_form_text", placeholder: "曲名を入力してください", remote: true %>
       <div class="posts_form_tracks js_form_tracks">
       </div>
       <div class="posts_btn-wrapper">

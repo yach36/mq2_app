@@ -23,24 +23,24 @@ var formExplanationWrapperHtml = `
   <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
 </div>`;
 <!--モーダル表示-->
-  $postBtn.animate({
-    right: "-120px"
-  },
-  fadeTime);
-  $wrapper.css({
-    pointerEvents: "none"
-  });
-  // レコメンド一覧を非表示
-  $body.css({
-    overflowY: "hidden"
-  });
-  $wrapper.animate({
-    opacity: "0.1",
-  },
-  fadeTime);
-  $postModal.fadeIn(fadeTime);
-  $(".js_form_tracks").html(formExplanationWrapperHtml);
-  $(".js_form_tracks").addClass("is_active");
+$postBtn.animate({
+  right: "-120px"
+},
+fadeTime);
+$wrapper.css({
+  pointerEvents: "none"
+});
+// レコメンド一覧を非表示
+$body.css({
+  overflowY: "hidden"
+});
+$wrapper.animate({
+  opacity: "0.1",
+},
+fadeTime);
+$postModal.fadeIn(fadeTime);
+$(".js_form_tracks").html(formExplanationWrapperHtml);
+$(".js_form_tracks").addClass("is_active");
 
 <!-- spotifyAPIを用いた曲検索 -->
 $(".posts_form_text").on("keyup", function() {
@@ -48,7 +48,7 @@ $(".posts_form_text").on("keyup", function() {
   let seq = $(this).val();
   let $trackItems = $(".js_form_tracks").find(".posts_form_tracks_item");
   if (!seq) {
-  <!-- 検索結果を削除 -->
+    <!-- 検索結果を削除 -->
     $trackItems.remove();
     <!-- 初期状態に戻す -->
     $(".js_form_tracks").html(formExplanationWrapperHtml);
