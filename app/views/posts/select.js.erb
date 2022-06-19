@@ -9,7 +9,7 @@ $(".posts_form_hidden").attr("value", trackId);
 <!-- 検索入力欄を無効にする -->
 $(".posts_form_text").attr("disabled", "disabled");
 <!-- 選択済み画面を表示 -->
-$(".posts_form_tracks").html(`
+$(".js_form_tracks").html(`
   <div class="posts_selected-track_item">
     <div class="posts_selected-track_img-wrapper">
       <img class="posts_selected-track_img" src="${trackImage}" />
@@ -21,3 +21,6 @@ $(".posts_form_tracks").html(`
     <%= image_tag "icon_check.svg", class: "posts_selected-track_icon" %>
   </div>
 `);
+<!-- 検索結果欄のスタイル変更のためにクラス付与 -->
+$(".js_form_tracks").removeClass("is_active");
+$(".js_form_tracks").addClass("is_hidden");
