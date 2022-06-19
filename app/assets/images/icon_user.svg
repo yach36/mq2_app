@@ -1,11 +1,1 @@
-<svg id="icon_user" xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39">
-  <g id="楕円形_2" data-name="楕円形 2" transform="translate(11.792 7.911)" fill="none" stroke="#333" stroke-width="2">
-    <ellipse cx="7.449" cy="7.449" rx="7.449" ry="7.449" stroke="none"/>
-    <ellipse cx="7.449" cy="7.449" rx="6.449" ry="6.449" fill="none"/>
-  </g>
-  <g id="楕円形_3" data-name="楕円形 3" fill="none" stroke="#333" stroke-width="2">
-    <circle cx="19.5" cy="19.5" r="19.5" stroke="none"/>
-    <circle cx="19.5" cy="19.5" r="18.5" fill="none"/>
-  </g>
-  <path id="パス_3" data-name="パス 3" d="M253.264,828.653c0-13.99,10.722-12.743,10.722-12.743s10.724-1.257,10.724,12.743" transform="translate(-244.746 -793.855)" fill="none" stroke="#333" stroke-width="2"/>
-</svg>
+<svg id="icon_user" xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39"><g id="楕円形_2" data-name="楕円形 2" transform="translate(11.792 7.911)" fill="none" stroke="#333" stroke-width="2"><ellipse cx="7.449" cy="7.449" rx="7.449" ry="7.449" stroke="none"/><ellipse cx="7.449" cy="7.449" rx="6.449" ry="6.449" fill="none"/></g><g id="楕円形_3" data-name="楕円形 3" fill="none" stroke="#333" stroke-width="2"><circle cx="19.5" cy="19.5" r="19.5" stroke="none"/><circle cx="19.5" cy="19.5" r="18.5" fill="none"/></g><path id="パス_3" data-name="パス 3" d="M253.264,828.653c0-13.99,10.722-12.743,10.722-12.743s10.724-1.257,10.724,12.743" transform="translate(-244.746 -793.855)" fill="none" stroke="#333" stroke-width="2"/></svg>

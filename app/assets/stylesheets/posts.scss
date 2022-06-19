@@ -279,12 +279,26 @@
     color: var(--black-color);
     margin-top: 4px;
   }
-  &_icon {
+  &_icon__check {
     width: 24px;
     height: 24px;
     position: absolute;
     top: 8px;
     right: 8px;
+  }
+  &_icon-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+  }
+  &_icon__arrow {
+    width: 100%;
+    height: 100%;
   }
 }
 

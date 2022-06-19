@@ -18,7 +18,10 @@ $(".js_form_tracks").html(`
       <p class="posts_selected-track_name">${trackName}</p>
       <p class="posts_selected-track_artist">${trackArtist}</p>
     </div>
-    <%= image_tag "icon_check.svg", class: "posts_selected-track_icon" %>
+    <%= image_tag "icon_check.svg", class: "posts_selected-track_icon__check" %>
+    <%= link_to new_post_path, class: "posts_selected-track_icon-link", remote: true do %>
+      <%= image_tag "icon_arrow-left.svg", class: "posts_selected-track_icon__arrow" %>
+    <% end %>
   </div>
 `);
 <!-- 検索結果欄のスタイル変更のためにクラス付与 -->

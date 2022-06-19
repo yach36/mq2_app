@@ -1,4 +1,1 @@
-<svg id="icon_check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <circle id="楕円形_4" data-name="楕円形 4" cx="12" cy="12" r="12" fill="#67db8d"/>
-  <path id="パス_4" data-name="パス 4" d="M1065.1,536.061l2.59,2.322,7.458-8.248" transform="translate(-1058.128 -522.259)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-</svg>
+<svg id="icon_check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle id="楕円形_4" data-name="楕円形 4" cx="12" cy="12" r="12" fill="#67db8d"/><path id="パス_4" data-name="パス 4" d="M1065.1,536.061l2.59,2.322,7.458-8.248" transform="translate(-1058.128 -522.259)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
