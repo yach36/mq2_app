@@ -1,0 +1,20 @@
+<!--モーダル非表示-->
+var modalHide = () => {
+    $postModal.fadeOut(fadeTime);
+    $wrapper.animate({
+      opacity: wrapperOpacity
+    },
+    fadeTime);
+    $body.css({
+      overflowY: "scroll"
+    });
+    $wrapper.css({
+      pointerEvents: "auto",
+    });
+    $postBtn.animate({
+      right: postBtnRight
+    },
+    fadeTime);
+};
+<!--モーダル非表示-->
+modalHide();

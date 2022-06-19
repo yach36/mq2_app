@@ -1,0 +1,209 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "reset";
+
+:root {
+  /* 色管理用の変数 */
+  --black-color: #333;
+  --white-color: #fff;
+  --gray-color: #707070;
+  --gray-color02: #ccc;
+  --primary-color: #67db8d;
+  --sub-color: #b9e6c7;
+}
+
+:root {
+  /* コンテンツ幅管理用の変数 */
+  --content-width-sm: 760px;
+  --content-width: 960px;
+  --content-width-lg: 1080px;
+}
+
+:root {
+  /* z-index管理用の変数 */
+  --z-index-back: -1;
+  --z-index-default: 1;
+  --z-index-page-top: 50;
+  --z-index-header: 100;
+  --z-index-menu: 150;
+}
+
+/* ---------- base ---------- */
+body {
+  color: var(--black-color);
+  font-size: 16px;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.75;
+  // スクロールバー非表示
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------ layout ------------ */
+.l_container {
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+.l_contents {
+  padding: 80px 0;
+  min-height: 100vh;
+}
+
+.l_header {
+  width: 100%;
+  height: 80px;
+  background: var(--white-color);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
+  z-index: var(--z-index-page-top);
+  
+  &-inner {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-title {
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &-nav {
+    display: none;
+  }
+}
+
+.l_footer {
+  width: 100%;
+  height: 80px;
+  background: var(--white-color);
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.08);
+  z-index: var(--z-index-page-top);
+  
+  &-inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &_link {
+    display: block;
+    width: 50%;
+    height: 100%;
+  }
+  
+  &_item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &-pointer {
+      transition: opacity 0.05s ease-in;
+      content: "";
+      width: 80px;
+      height: 2px;
+      background: var(--primary-color);
+      position: absolute;
+      transform: translateX(-50%);
+    }
+  }
+  
+  &_icon-wrapper {
+    display: inline-block;
+  }
+}
+
+/* ------------ module ------------ */
+.m_hamburger {
+  width: 32px;
+  height: 28px;
+  position: relative;
+  
+  &-bar {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: var(--black-color);
+    position: absolute;
+    left: 0;
+    
+    &:nth-child(1) {
+      top: 0;
+    }
+    
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:nth-child(3) {
+      top: 100%;
+      transform: translateY(-100%);
+    }
+  }
+}
+
+.m_post-button {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-color);
+  position: fixed;
+  bottom: 104px;
+  right: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+  z-index: var(--z-index-page-top);
+}
+
+/* ------------ utility ------------ */
+
+/* ------------ js ------------ */
+
+.js_hamburger-bar {
+  transition: top 0.25s, left 0.25s, transform 0.25s;
+}
+.js_hamburger-bar.is_active {
+  &:nth-child(1) {
+    top: 50%;
+    transform: rotate(225deg);
+  }
+  &:nth-child(2) {
+    left: 60px;
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    top: 50%;
+    transform: rotate(-225deg);
+  }
+}

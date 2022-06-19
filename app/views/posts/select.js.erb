@@ -1,0 +1,32 @@
+<!-- トラックIDを保存 -->
+var trackId = "<%= @track_id %>";
+var trackImage = "<%= @track_image %>";
+var trackName = "<%= @track_name %>";
+var trackArtist = "<%= @track_artist %>";
+console.log(trackId);
+<!-- 取得した曲IDをパラメータに設定 -->
+$(".posts_form_hidden").attr("value", trackId);
+<!-- 検索入力欄を無効にする -->
+$(".posts_form_text").attr("disabled", true);
+<!-- 選択済み画面を表示 -->
+$(".js_form_tracks").html(`
+  <div class="posts_selected-track_item">
+    <div class="posts_selected-track_img-wrapper">
+      <img class="posts_selected-track_img" src="${trackImage}" />
+    </div>
+    <div class="posts_selected-track_info-wrapper">
+      <p class="posts_selected-track_name">${trackName}</p>
+      <p class="posts_selected-track_artist">${trackArtist}</p>
+    </div>
+    <%= image_tag "icon_check.svg", class: "posts_selected-track_icon__check" %>
+    <%= link_to new_post_path, class: "posts_selected-track_icon-link", remote: true do %>
+      <%= image_tag "icon_arrow-left.svg", class: "posts_selected-track_icon__arrow" %>
+    <% end %>
+  </div>
+`);
+<!-- 検索結果欄のスタイル変更のためにクラス付与 -->
+$(".js_form_tracks").removeClass("is_active");
+$(".js_form_tracks").addClass("is_hidden");
+<!-- 検索フォームの値をクリア -->
+$(".js_form_text").val("");
+$(".js_form_text").attr("placeholder", "");

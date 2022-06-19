@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HelloApp</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="今聴いている曲を共有できる音楽のコミュニティサービスです" />
+    
+    <!-- favicon/webclipicon -->
+    
+    <!-- ogp -->
+    
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="js_body">
+    <div class="js_wrapper">
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/postBtn' %>
+      <div class="l_main-wrapper">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
+    <div class="js_posts_modal-wrapper l_container"></div>
   </body>
 </html>

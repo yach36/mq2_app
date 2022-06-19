@@ -1,0 +1,24 @@
+<footer class="l_footer">
+  <div class="l_footer-inner l_container">
+    <span class="l_footer_item-pointer js_footer_item-pointer"></span>
+    <%= link_to posts_path, class: "l_footer_link", method: :get, remote: true do %>
+    <div class="l_footer_item js_footer_item" id="js_footer_item-1">
+      <div class="l_footer_icon-wrapper">
+        <%= image_tag "icon_home.svg", class: "l_footer_icon" %>
+      </div>
+      <!--/.l_footer_icon-wrapper-->
+    </div>
+    <!--/.l_footer_item-->
+    <% end %>
+    <%= link_to hoge_index_path, class: "l_footer_link", method: :get, remote: true do %>
+    <div class="l_footer_item js_footer_item" id="js_footer_item-2">
+      <div class="l_footer_icon-wrapper">
+        <%= image_tag "icon_user.svg", class: "l_footer_icon" %>
+      </div>
+      <!--/.l_footer_icon-wrapper-->
+    </div>
+    <!--/.l_footer_item-->
+    <% end %>
+  </div>
+  <!--/.l_footer-inner-->
+</footer>

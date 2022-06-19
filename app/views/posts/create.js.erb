@@ -1,0 +1,22 @@
+<!--モーダル非表示-->
+var modalHide = () => {
+    $postModal.fadeOut(fadeTime);
+    $wrapper.animate({
+      opacity: wrapperOpacity
+    },
+    fadeTime);
+    $body.css({
+      overflowY: "scroll"
+    });
+    $wrapper.css({
+      pointerEvents: "auto",
+    });
+    $postBtn.animate({
+      right: postBtnRight
+    },
+    fadeTime);
+};
+<!-- モーダル非表示実行 -->
+modalHide();
+<!-- 投稿一覧を表示 -->
+$(".l_main-wrapper").html("<%= j(render "posts/index", posts: @posts) %>");
