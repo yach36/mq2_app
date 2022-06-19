@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     
   end
   
-  def track_select
+  def select
     @track_id = params[:track_id]
     @track_image = params[:track_image]
     @track_name = params[:track_name]

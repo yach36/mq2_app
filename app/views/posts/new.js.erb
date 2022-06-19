@@ -1,30 +1,29 @@
 <!--// modal-->
-let $postModal = $(".js_posts_modal-wrapper");
+var $postModal = $(".js_posts_modal-wrapper");
 $postModal.html("<%= j(render "posts/new") %>");
-let postModalOpacity = $postModal.css("opacity");
+var postModalOpacity = $postModal.css("opacity");
 <!--// postBtn-->
-let $postBtn = $(".js_post-button");
-let postBtnRight = $postBtn.css("right");
-let postBtnOpacity = $postBtn.css("opacity");
+var $postBtn = $(".js_post-button");
+var postBtnRight = $postBtn.css("right");
+var postBtnOpacity = $postBtn.css("opacity");
 <!--// wrapper-->
-let $wrapper = $(".js_wrapper")
-let wrapperOpacity = $wrapper.css("opacity");
+var $wrapper = $(".js_wrapper")
+var wrapperOpacity = $wrapper.css("opacity");
 <!--// body-->
-let $body = $(".js_body");
+var $body = $(".js_body");
 <!--×印-->
-let $postModalCross = $(".js_posts_modal_cross");
+var $postModalCross = $(".js_posts_modal_cross");
 <!--キャンセルボタン-->
-let $cancelBtn = $(".js_btn_cancel");
-let fadeTime = 240;
+var $cancelBtn = $(".js_btn_cancel");
+var fadeTime = 240;
 $postModal.hide();
 <!-- 検索結果初期表示 -->
-let formExplanationWrapperHtml = `
+var formExplanationWrapperHtml = `
 <div class="posts_form_tracks_explanation-wrapper">
   <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
 </div>`;
 <!--モーダル表示-->
-$postBtn.on("click", function() {
-  $(this).animate({
+  $postBtn.animate({
     right: "-120px"
   },
   fadeTime);
@@ -40,20 +39,19 @@ $postBtn.on("click", function() {
   },
   fadeTime);
   $postModal.fadeIn(fadeTime);
-  $formTracks.html(formExplanationWrapperHtml);
-});
+  $(".js_form_tracks").html(formExplanationWrapperHtml);
+  $(".js_form_tracks").addClass("is_active");
 
 <!-- spotifyAPIを用いた曲検索 -->
-let $formTracks = $(".posts_form_tracks");
 $(".posts_form_text").on("keyup", function() {
   <!-- 検索文字列を格納 -->
   let seq = $(this).val();
-  let $trackItems = $(".posts_form_tracks").find(".posts_form_tracks_item");
+  let $trackItems = $(".js_form_tracks").find(".posts_form_tracks_item");
   if (!seq) {
   <!-- 検索結果を削除 -->
     $trackItems.remove();
     <!-- 初期状態に戻す -->
-    $formTracks.html(formExplanationWrapperHtml);
+    $(".js_form_tracks").html(formExplanationWrapperHtml);
   }
   $.ajax({
     type: "GET",
@@ -66,7 +64,7 @@ $(".posts_form_text").on("keyup", function() {
     <!-- 検索結果をクリア -->
     $trackItems.remove();
     <!-- 説明文を消す -->
-    $formTracks.find(".posts_form_tracks_explanation-wrapper").remove();
+    $(".js_form_tracks").find(".posts_form_tracks_explanation-wrapper").remove();
     <!-- 検索結果を表示 -->
     for (let i = 0; i < tracks.length; i++) {
     let trackId = tracks[i]["id"];
@@ -76,7 +74,7 @@ $(".posts_form_text").on("keyup", function() {
     $(".posts_form_tracks")
     .append(`
     <div class="posts_form_tracks_item">
-      <a class="posts_form_tracks_link" data-remote="true" href="/posts/track_select?track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}">
+      <a class="posts_form_tracks_link" data-remote="true" href="/posts/select?track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}">
         <div class="posts_form_tracks_img-wrapper">
           <img class="posts_form_tracks_img" src="${trackImage}" />
         </div>

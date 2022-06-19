@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :posts, only: [:index, :new, :create]
   get 'posts/cancel' => 'posts#cancel'
-  get 'posts/track_select' => 'posts#track_select'
+  get 'posts/select' => 'posts#select'
   get 'hoge/index' => 'hoge#index'
 end
