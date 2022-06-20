@@ -1,45 +1,33 @@
-<!--// modal-->
-var $postModal = $(".js_posts_modal-wrapper");
-$postModal.html("<%= j(render "posts/new") %>");
-var postModalOpacity = $postModal.css("opacity");
-<!--// postBtn-->
-var $postBtn = $(".js_post-button");
-var postBtnRight = $postBtn.css("right");
-var postBtnOpacity = $postBtn.css("opacity");
-<!--// wrapper-->
-var $wrapper = $(".js_wrapper")
-var wrapperOpacity = $wrapper.css("opacity");
-<!--// body-->
-var $body = $(".js_body");
-<!--×印-->
-var $postModalCross = $(".js_posts_modal_cross");
-<!--キャンセルボタン-->
-var $cancelBtn = $(".js_btn_cancel");
+<!-- モーダル描画 -->
+$(".js_modal-wrapper").html("<%= j(render "posts/new") %>");
+<!-- fadeTime -->
 var fadeTime = 240;
-$postModal.hide();
-<!-- 検索結果初期表示 -->
-var formExplanationWrapperHtml = `
-<div class="posts_form_tracks_explanation-wrapper">
-  <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
-</div>`;
-<!--モーダル表示-->
-$postBtn.animate({
+<!--鉛筆ボタンを画面外に飛ばす-->
+$(".js_post-button").animate({
   right: "-120px"
 },
 fadeTime);
-$wrapper.css({
+<!-- モーダル以外のポインタイベントを無効にする -->
+$(".js_wrapper").css({
   pointerEvents: "none"
 });
-// レコメンド一覧を非表示
-$body.css({
+<!-- bodyのスクロール無効にする -->
+$(".js_body").css({
   overflowY: "hidden"
 });
-$wrapper.animate({
+<!-- モーダル以外のopacityを小さくする -->
+$(".js_wrapper").animate({
   opacity: "0.1",
 },
 fadeTime);
-$postModal.fadeIn(fadeTime);
-$(".js_form_tracks").html(formExplanationWrapperHtml);
+<!-- モーダルをフェードイン表示 -->
+$(".js_modal-wrapper").fadeIn(fadeTime);
+<!-- 曲検索結果初期表示 -->
+$(".js_form_tracks").html(`
+<div class="posts_form_tracks_explanation-wrapper">
+  <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
+</div>`);
+<!-- 初期スタイルに設定 -->
 $(".js_form_tracks").addClass("is_active");
 
 <!-- spotifyAPIを用いた曲検索 -->
@@ -51,7 +39,10 @@ $(".posts_form_text").on("keyup", function() {
     <!-- 検索結果を削除 -->
     $trackItems.remove();
     <!-- 初期状態に戻す -->
-    $(".js_form_tracks").html(formExplanationWrapperHtml);
+    $(".js_form_tracks").html(`
+    <div class="posts_form_tracks_explanation-wrapper">
+      <p class="posts_form_tracks_explanation">ここに曲検索の結果が入ります</p>
+    </div>`);
   }
   $.ajax({
     type: "GET",

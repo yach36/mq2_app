@@ -68,6 +68,9 @@
 }
 
 /* modal */
+.posts_modal-wrapper {
+  display: none;
+}
 .posts_modal {
   border: 1px solid var(--primary-color);
   border-radius: 5px;
