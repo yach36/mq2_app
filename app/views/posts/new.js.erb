@@ -55,7 +55,7 @@ $(".posts_form_text").on("keyup", function() {
   }
   $.ajax({
     type: "GET",
-    url: "<%= ENV["LOCAL_URL"] %>",
+    url: "<%= new_post_path %>",
     data: { search: seq },
     dataType: "json"
   })
@@ -74,7 +74,7 @@ $(".posts_form_text").on("keyup", function() {
     $(".posts_form_tracks")
     .append(`
     <div class="posts_form_tracks_item">
-      <a class="posts_form_tracks_link" data-remote="true" href="/posts/select?track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}">
+      <a class="posts_form_tracks_link" data-remote="true" href="/posts/select?track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}&search=${seq}">
         <div class="posts_form_tracks_img-wrapper">
           <img class="posts_form_tracks_img" src="${trackImage}" />
         </div>
