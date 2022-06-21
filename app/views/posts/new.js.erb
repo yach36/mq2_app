@@ -56,6 +56,8 @@ $(".js_form_text").on("keyup", function() {
     $trackItems.remove();
     <!-- 説明文を消す -->
     $(".js_form_tracks").find(".posts_form_tracks_explanation-wrapper").remove();
+    <!-- テキスト欄の値を取得 -->
+    let txtVal = $(".js_form_textarea").val();
     <!-- 検索結果を表示 -->
     for (let i = 0; i < tracks.length; i++) {
     let trackId = tracks[i]["id"];
@@ -65,7 +67,7 @@ $(".js_form_text").on("keyup", function() {
     $(".posts_form_tracks")
     .append(`
     <div class="posts_form_tracks_item">
-      <a class="posts_form_tracks_link" data-remote="true" href="/posts/select?track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}&search=${seq}">
+      <a class="posts_form_tracks_link" data-remote="true" href="/posts/select?txt_val=${txtVal}&track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}&search=${seq}">
         <div class="posts_form_tracks_img-wrapper">
           <img class="posts_form_tracks_img" src="${trackImage}" />
         </div>
