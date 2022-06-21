@@ -4,9 +4,15 @@ var seq = "<%= @search %>";
 $(".js_form_text").attr("disabled", false);
 $(".js_form_text").attr("placeholder", "曲名を入力してください");
 $(".js_form_text").val(seq);
+<!-- submitボタンを無効化 -->
+$(".js_btn_submit").attr("disabled", true);
+$(".js_form_textarea").on("keyup", function() {
+  $(".js_btn_submit").attr("disabled", true);
+});
 <!-- 検索結果を再描画 -->
 $(".js_form_tracks").removeClass("is_hidden");
 $(".js_form_tracks").addClass("is_active");
+
 <!-- ajax再通信 -->
 $.ajax({
   type: "GET",
