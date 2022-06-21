@@ -1,18 +1,20 @@
+<!-- fadeTime -->
+var fadeTime = 240;
 <!--モーダル非表示-->
 var modalHide = () => {
-    $postModal.fadeOut(fadeTime);
-    $wrapper.animate({
-      opacity: wrapperOpacity
+    $(".js_modal-wrapper").fadeOut(fadeTime);
+    $(".js_wrapper").animate({
+      opacity: 1
     },
     fadeTime);
-    $body.css({
+    $(".js_body").css({
       overflowY: "scroll"
     });
-    $wrapper.css({
+    $(".js_wrapper").css({
       pointerEvents: "auto",
     });
-    $postBtn.animate({
-      right: postBtnRight
+    $(".js_post-button").animate({
+      right: "16px"
     },
     fadeTime);
 };

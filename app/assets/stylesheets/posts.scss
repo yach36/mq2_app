@@ -317,3 +317,7 @@
 .js_form_tracks.is_hidden {
   height: auto;
 }
+
+.js_btn_submit:disabled {
+  cursor: not-allowed;
+}
