@@ -9,7 +9,6 @@ require("@rails/activestorage").start();
 require("channels");
 require("jquery");
 require("jquery-easing");
-require("posts");
 
 window.$ = jQuery;
 

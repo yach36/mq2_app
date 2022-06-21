@@ -31,7 +31,7 @@ $(".js_form_tracks").html(`
 $(".js_form_tracks").addClass("is_active");
 
 <!-- spotifyAPIを用いた曲検索 -->
-$(".posts_form_text").on("keyup", function() {
+$(".js_form_text").on("keyup", function() {
   <!-- 検索文字列を格納 -->
   let seq = $(this).val();
   let $trackItems = $(".js_form_tracks").find(".posts_form_tracks_item");
