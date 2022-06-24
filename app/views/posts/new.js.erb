@@ -85,7 +85,7 @@ $(".js_form_text").on("keyup", function() {
 var txtIsExist = false; <!-- post.txtの値が存在するかどうか -->
 var trackIdIsExist = false; <!-- post.track_idの値が存在するかどうか -->
 <!-- submitのdisabledを変更 -->
-let changeSubmitStatus = () => {
+var changeSubmitStatus = () => {
   if (txtIsExist && trackIdIsExist) {
     <!-- submitボタンを有効化 -->
     $(".js_btn_submit").attr("disabled", false);
