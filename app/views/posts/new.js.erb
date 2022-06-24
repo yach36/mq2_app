@@ -67,7 +67,7 @@ $(".js_form_text").on("keyup", function() {
     $(".posts_form_tracks")
     .append(`
     <div class="posts_form_tracks_item">
-      <a class="posts_form_tracks_link" data-remote="true" href="/posts/select?txt_val=${txtVal}&track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}&search=${seq}">
+      <a class="posts_form_tracks_link js_form_tracks_link" data-remote="true" href="/posts/select?track_id=${trackId}&track_image=${trackImage}&track_name=${trackName}&track_artist=${trackArtist}&search=${seq}">
         <div class="posts_form_tracks_img-wrapper">
           <img class="posts_form_tracks_img" src="${trackImage}" />
         </div>
@@ -79,4 +79,28 @@ $(".js_form_text").on("keyup", function() {
     </div>`);
     }
   });
+});
+<!-- submitボタン制御 -->
+<!-- 制御変数 -->
+var txtIsExist = false; <!-- post.txtの値が存在するかどうか -->
+var trackIdIsExist = false; <!-- post.track_idの値が存在するかどうか -->
+<!-- submitのdisabledを変更 -->
+let changeSubmitStatus = () => {
+  if (txtIsExist && trackIdIsExist) {
+    <!-- submitボタンを有効化 -->
+    $(".js_btn_submit").attr("disabled", false);
+  } else {
+    <!-- submitボタンを無効化 -->
+    $(".js_btn_submit").attr("disabled", true);  
+  }
+};
+<!-- txtの値を確認 -->
+$(".js_form_textarea").on("keyup", function() {
+console.log($(this).val());
+  if ($(this).val()) {
+    txtIsExist = true;
+  } else {
+    txtIsExist = false;
+  }
+  changeSubmitStatus();
 });

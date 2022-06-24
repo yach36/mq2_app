@@ -67,6 +67,6 @@ $(document).on("turbolinks:load", function() {
       left: itemPos.left + itemWidth / 2
     });
   });
+  
+  /* ------------ posts ------------*/
 });
-
-/* ------------ 変数 ------------*/
