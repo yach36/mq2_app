@@ -9,7 +9,6 @@ require("@rails/activestorage").start();
 require("channels");
 require("jquery");
 require("jquery-easing");
-require("posts");
 
 window.$ = jQuery;
 
@@ -68,6 +67,6 @@ $(document).on("turbolinks:load", function() {
       left: itemPos.left + itemWidth / 2
     });
   });
+  
+  /* ------------ posts ------------*/
 });
-
-/* ------------ 変数 ------------*/

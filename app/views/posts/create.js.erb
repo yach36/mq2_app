@@ -1,22 +1,24 @@
+<!-- fadeTime -->
+var fadeTime = 240;
 <!--モーダル非表示-->
 var modalHide = () => {
-    $postModal.fadeOut(fadeTime);
-    $wrapper.animate({
-      opacity: wrapperOpacity
+    $(".js_modal-wrapper").fadeOut(fadeTime);
+    $(".js_wrapper").animate({
+      opacity: 1
     },
     fadeTime);
-    $body.css({
+    $(".js_body").css({
       overflowY: "scroll"
     });
-    $wrapper.css({
+    $(".js_wrapper").css({
       pointerEvents: "auto",
     });
-    $postBtn.animate({
-      right: postBtnRight
+    $(".js_post-button").animate({
+      right: "16px"
     },
     fadeTime);
 };
 <!-- モーダル非表示実行 -->
 modalHide();
 <!-- 投稿一覧を表示 -->
-$(".l_main-wrapper").html("<%= j(render "posts/index", posts: @posts) %>");
+$(".js_template-wrapper").html("<%= j(render "posts/index", posts: @posts) %>");

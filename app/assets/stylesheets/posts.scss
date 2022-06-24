@@ -68,6 +68,9 @@
 }
 
 /* modal */
+.posts_modal-wrapper {
+  display: none;
+}
 .posts_modal {
   border: 1px solid var(--primary-color);
   border-radius: 5px;
@@ -157,7 +160,6 @@
   &_tracks {
     margin-top: 20px;
     width: 100%;
-    height: 220px;
     border: 1px solid var(--gray-color02);
     &_explanation-wrapper {
       width: 100%;
@@ -307,10 +309,19 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  height: 220px;
 }
 .js_form_tracks.is_active::-webkit-scrollbar {
   display: none;
 }
 .js_form_tracks.is_hidden {
   height: auto;
+}
+
+.js_btn_submit {
+  transition: opacity 0.25s;
+}
+.js_btn_submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.25;
 }
