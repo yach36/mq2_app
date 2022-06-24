@@ -318,6 +318,9 @@
   height: auto;
 }
 
+.js_btn_submit {
+  transition: opacity 0.25s;
+}
 .js_btn_submit:disabled {
   cursor: not-allowed;
   opacity: 0.25;
