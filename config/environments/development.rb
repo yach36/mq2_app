@@ -66,4 +66,8 @@ Rails.application.configure do
   # docker
   config.web_console.whitelisted_ips = '182.165.55.17'
   config.web_console.allowed_ips = '182.165.55.17'
+  
+  # deviseの設定
+  # Ensure you have defined default url options in your environments files.
+  config.action_mailer.default_url_options = { host: ENV['LOCAL_URL'], port: 3000 }
 end

@@ -11,6 +11,7 @@ gem 'bootsnap',   '1.10.3', require: false
 gem 'mysql2'
 gem 'dotenv-rails'
 gem 'rspotify'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
