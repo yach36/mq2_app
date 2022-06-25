@@ -51,7 +51,6 @@ $(".js_form_text").on("keyup", function() {
     dataType: "json"
   })
   .done(function(tracks) {
-    console.log(tracks);
     <!-- 検索結果をクリア -->
     $trackItems.remove();
     <!-- 説明文を消す -->
@@ -96,7 +95,6 @@ var changeSubmitStatus = () => {
 };
 <!-- txtの値を確認 -->
 $(".js_form_textarea").on("keyup", function() {
-console.log($(this).val());
   if ($(this).val()) {
     txtIsExist = true;
   } else {
