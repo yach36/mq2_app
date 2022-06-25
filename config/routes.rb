@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get 'posts/select' => 'posts#select'
   get 'posts/unselect' => 'posts#unselect'
   get 'hoge/index' => 'hoge#index'
-    devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 end
