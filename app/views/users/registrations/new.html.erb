@@ -12,8 +12,8 @@
       </div>
       <div class="users_form-group">
         <%= f.label :password, "パスワード", class: "users_form_label" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "users_form_text-field", placeholder: "8文字以上で設定してください" %>
-        <%= f.password_field :password_confirmation, class: "users_form_text-field users_form_confirmation-field", placeholder: "もう一度入力してください" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "users_form_text-field", placeholder: "8文字以上で設定してください" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "users_form_text-field users_form_confirmation-field", placeholder: "もう一度入力してください" %>
       </div>
       <div class="users_form_btn-group">
         <%= f.submit "アカウントを作成する", class: "users_form_btn__submit" %>

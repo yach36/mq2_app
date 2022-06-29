@@ -8,6 +8,5 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: { case_sensitive: false }
 
-  validates :account_name, presence: true
   validates :password, length: { minimum: 8 }
 end
