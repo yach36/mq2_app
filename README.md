@@ -1,7 +1,5 @@
-# Ruby on Rails Tutorial
+# MusiQ
 
-## "hello, world!"
-
-This is the first application for the
-[*Ruby on Rails Tutorial*](https://railstutorial.jp/)
-by [Michael Hartl](https://www.michaelhartl.com/). Hello, world!
+音楽レコメンドサービス__MusiQ__のリポジトリです
+<br/>
+私が初めて作ったWebアプリケーション(音楽質問サービス:[旧MusiQ](https://musicquestion0.herokuapp.com/))を基にしたサービスです。
