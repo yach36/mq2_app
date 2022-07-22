@@ -8,13 +8,9 @@ $(".js_post-button").animate({
 },
 fadeTime);
 <!-- モーダル以外のポインタイベントを無効にする -->
-$(".js_wrapper").css({
-  pointerEvents: "none"
-});
+$(".js_wrapper").addClass("is_disabled");
 <!-- bodyのスクロール無効にする -->
-$(".js_body").css({
-  overflowY: "hidden"
-});
+$(".js_body").addClass("is_hidden");
 <!-- モーダル以外のopacityを小さくする -->
 $(".js_wrapper").animate({
   opacity: "0.1",
