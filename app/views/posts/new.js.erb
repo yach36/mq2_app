@@ -8,13 +8,9 @@ $(".js_post-button").animate({
 },
 fadeTime);
 <!-- モーダル以外のポインタイベントを無効にする -->
-$(".js_wrapper").css({
-  pointerEvents: "none"
-});
+$(".js_wrapper").addClass("is_disabled");
 <!-- bodyのスクロール無効にする -->
-$(".js_body").css({
-  overflowY: "hidden"
-});
+$(".js_body").addClass("is_hidden");
 <!-- モーダル以外のopacityを小さくする -->
 $(".js_wrapper").animate({
   opacity: "0.1",
@@ -51,7 +47,6 @@ $(".js_form_text").on("keyup", function() {
     dataType: "json"
   })
   .done(function(tracks) {
-    console.log(tracks);
     <!-- 検索結果をクリア -->
     $trackItems.remove();
     <!-- 説明文を消す -->
@@ -96,7 +91,6 @@ var changeSubmitStatus = () => {
 };
 <!-- txtの値を確認 -->
 $(".js_form_textarea").on("keyup", function() {
-console.log($(this).val());
   if ($(this).val()) {
     txtIsExist = true;
   } else {

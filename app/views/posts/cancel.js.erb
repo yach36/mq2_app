@@ -7,12 +7,8 @@ var modalHide = () => {
       opacity: 1
     },
     fadeTime);
-    $(".js_body").css({
-      overflowY: "scroll"
-    });
-    $(".js_wrapper").css({
-      pointerEvents: "auto",
-    });
+    $(".js_body").removeClass("is_hidden");
+    $(".js_wrapper").removeClass("is_disabled");
     $(".js_post-button").animate({
       right: "16px"
     },

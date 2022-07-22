@@ -1,0 +1,21 @@
+<div class="users_signin">
+  <div class="users_signin-inner">
+    <h2 class="users_signin_head">MusiQにログインしよう！</h2>
+    <%= form_with model: @user, url: user_session_path, class: "users_form" do |f| %>
+      <div class="users_form-group">
+        <%= f.label :account_id, "アカウントID", class: "users_form_label" %>
+        <%= f.text_field :account_id, autofocus: true, autocomplete: "email", class: "users_form_text-field" %>
+      </div>
+      <div class="users_form-group">
+        <%= f.label :password, "パスワード", class: "users_form_label" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "users_form_text-field" %>
+      </div>
+      <div class="users_form_btn-group">
+        <%= f.submit "ログインする", class: "users_form_btn__submit" %>
+        <%= link_to "新規アカウントを作成する", new_user_registration_path, class: "users_form_link__signup" %>
+      </div>
+    <% end %>
+  </div>
+  <!--/.users_signin-inner-->
+</div>
+<!--/.users_signin-->

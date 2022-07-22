@@ -1,21 +1,23 @@
 <header class="l_header">
   <div class="l_header-inner l_container">
     <h1 class="l_header-title">
-      <%= link_to "MusiQ", controller: "posts", action: "index", class: "l_header-link" %>
+      <%= link_to "MusiQ", posts_path, controller: "posts", action: "index", class: "l_header-link" %>
     </h1>
-    <nav class="l_header-nav">
-      <ul class="l_header-nav_list">
-        <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
-        <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
-        <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
-      </ul>
-    </nav>
-    <button class="m_hamburger js_hamburger">
-      <span class="m_hamburger-bar js_hamburger-bar"></span>
-      <span class="m_hamburger-bar js_hamburger-bar"></span>
-      <span class="m_hamburger-bar js_hamburger-bar"></span>
-    </button>
-    <!--/.m_hamburger-->
+    <% if user_signed_in? %>
+      <nav class="l_header-nav">
+        <ul class="l_header-nav_list">
+          <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
+          <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
+          <li class="l_header-nav_item"><a class="l_header-nav_link">マイページ</a></li>
+        </ul>
+      </nav>
+      <button class="m_hamburger js_hamburger">
+        <span class="m_hamburger-bar js_hamburger-bar"></span>
+        <span class="m_hamburger-bar js_hamburger-bar"></span>
+        <span class="m_hamburger-bar js_hamburger-bar"></span>
+      </button>
+      <!--/.m_hamburger-->
+    <% end %>
   </div>
   <!--/.l_header-inner-->
 

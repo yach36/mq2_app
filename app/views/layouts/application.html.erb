@@ -22,14 +22,30 @@
   </head>
 
   <body class="js_body">
-    <div class="js_wrapper">
-      <%= render 'layouts/header' %>
-      <%= render 'layouts/postBtn' %>
-      <div class="js_template-wrapper">
-        <%= yield %>
+    <!-- deviseの設定 -->
+    <%= notice %>
+    <%= alert %>
+    <% if user_signed_in? %>
+      <div class="js_wrapper">
+        <%= render 'layouts/header' %>
+        <%= render 'layouts/postBtn' %>
+        <div class="js_template-wrapper l_contents">
+          <%= yield %>
+        </div>
+        <!--/.js_template-wrapper-->
+        <%= render 'layouts/footer' %>
       </div>
-      <%= render 'layouts/footer' %>
-    </div>
-    <div class="posts_modal-wrapper js_modal-wrapper l_container"></div>
+      <!--/.js_wrapper-->
+      <div class="posts_modal-wrapper js_modal-wrapper l_container"></div>
+    <% else %>
+      <div class="js_wrapper">
+        <%= render 'layouts/header' %>
+        <div class="js_template-wrapper l_contents">
+          <%= yield %>
+        </div>
+        <!--/.js_template-wrapper-->
+      </div>
+      <!--/.js_wrapper-->
+    <% end %>
   </body>
 </html>
