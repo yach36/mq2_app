@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   root to: 'posts#index'
   resources :posts, only: [:index, :new, :create]
   get 'posts/cancel' => 'posts#cancel'
@@ -9,4 +10,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  resources :users, only: [:show]
 end

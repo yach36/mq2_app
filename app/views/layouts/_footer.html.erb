@@ -10,7 +10,7 @@
     </div>
     <!--/.l_footer_item-->
     <% end %>
-    <%= link_to hoge_index_path, class: "l_footer_link", method: :get, remote: true do %>
+    <%= link_to user_path(current_user.id), class: "l_footer_link", method: :get, remote: true do %>
     <div class="l_footer_item js_footer_item" id="js_footer_item-2">
       <div class="l_footer_icon-wrapper">
         <%= image_tag "icon_user.svg", class: "l_footer_icon" %>
